@@ -10,9 +10,14 @@ import javax.servlet.ServletContext
 import org.springframework.web.context.support.WebApplicationContextUtils
 import com.coeusweb.Controller
 import com.coeusweb.core.factory.ControllerFactory
-import com.coeusweb.core.util.Strings
+import com.coeusweb.core.convention.Conventions
 
-
+/**
+ * A {@code ControllerFactory} that creates {@code Controller} instances from beans
+ * defined in a {@code WebApplicationContext}. 
+ * 
+ * @see SpringRegistrar
+ */
 class SpringControllerFactory(servletContext: ServletContext) extends ControllerFactory {
   
   val context = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext)
@@ -23,5 +28,14 @@ class SpringControllerFactory(servletContext: ServletContext) extends Controller
     context.getBean(classToBeanName(klass)).asInstanceOf[C]
   }
   
-  def classToBeanName(c: Class[_]) = Strings.firstCharToLower(c.getSimpleName)
+  /**
+   * Translate the class name to a bean name to be used for creating a controller instance
+   * from a Spring {@code ApplicationContext}.
+   * 
+   * <p>This method uses the class simple name with the first character converted to lower
+   * case.</p>
+   * 
+   * @param c the class to use for deriving a controller bean name
+   */
+  protected def classToBeanName(c: Class[_]) = Conventions.classToAttributeName(c)
 }
