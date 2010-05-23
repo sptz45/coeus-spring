@@ -30,6 +30,10 @@ object RequestInterceptorAdapter {
   def apply(interceptor: HandlerInterceptor): RequestInterceptor =
     new HandlerInterceptorAdapter(interceptor)
 
+  private implicit def toException(t: Throwable) = t match {
+    case e: Exception => e
+    case _            => new Exception(t)
+  }
 
   private class WebRequestInterceptorAdapter(interceptor: WebRequestInterceptor) extends RequestInterceptor {
     def preHandle(context: RequestContext): Boolean = {
@@ -43,7 +47,7 @@ object RequestInterceptorAdapter {
     }
     def afterRender(context: RequestContext) {
       val req = new ServletWebRequest(context.request.servletRequest, context.response.servletResponse)
-      interceptor.afterCompletion(req, toException(context.error))
+      interceptor.afterCompletion(req, context.error)
     }
   }
 
@@ -58,12 +62,7 @@ object RequestInterceptorAdapter {
     }
     def afterRender(context: RequestContext) {
       import context._
-      interceptor.afterCompletion(request.servletRequest, response.servletResponse, handler, toException(error))
+      interceptor.afterCompletion(request.servletRequest, response.servletResponse, handler, error)
     }
-  }
-
-  private def toException(t: Throwable) = t match {
-    case e: Exception => e
-    case _            => null
   }
 }
