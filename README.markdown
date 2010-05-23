@@ -1,9 +1,22 @@
 
 # Coeus Spring
 
-Basic integration for the Coeus and Spring frameworks. This project provides
-the ability to use Spring for dependency injection in applications developed
-using the Coeus web framework.  
+Basic integration for the Coeus and Spring frameworks.
+
+
+## Using Spring for dependency injection in a Coeus application
+
+To use Spring for dependency injection you have to:
+
+1. Define your Coeus controllers in a Spring `WebApplicationContext`.
+2. Configure Coeus to use `SpringControllerFactory` for creating the controller
+   instances from the Spring application context.
+3. Use `SpringRegistrar` to register the controllers in Coeus    
+
+If you are using classpath scanning you could also annotate you controllers
+with the `@Controller` meta-annotation so that your controllers can be detected
+in classpath scanning and also automatically registered as prototype beans.
+
 
 ## License
 
