@@ -8,6 +8,7 @@ package com.coeusweb.spring.test
 
 import com.coeusweb.mvc._
 import com.coeusweb.spring.mvc.Controller
+import org.springframework.stereotype.Component
 
 @Controller
 class BlogController extends AbstractController {
@@ -16,5 +17,10 @@ class BlogController extends AbstractController {
 
 @Controller
 class PostController extends AbstractController {
+  @Get def index = "index"
+}
+
+@Component
+class SingletonController extends AbstractController {
   @Get def index = "index"
 }

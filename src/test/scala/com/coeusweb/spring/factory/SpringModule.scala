@@ -13,7 +13,7 @@ import com.coeusweb.config._
 
 class SpringModule(sc: ServletConfig) extends ConfigBuilder(sc) with ControllerRegistrar {
 
-  override def dispatcherConfig = new DispatcherConfig(sc) {
+  override val dispatcherConfig = new DispatcherConfig(sc) {
     override lazy val controllerFactory = new SpringControllerFactory(sc.getServletContext)
   }
 

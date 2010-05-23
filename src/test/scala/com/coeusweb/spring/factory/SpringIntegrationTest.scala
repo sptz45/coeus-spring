@@ -4,34 +4,46 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring
-package factory
+package com.coeusweb.spring.factory
 
 import org.junit.Test
 import org.junit.Assert._
 import javax.servlet.ServletContextEvent
-import org.springframework.mock.web.MockServletConfig
+import org.springframework.mock.web.{ MockServletConfig, MockServletContext }
 import org.springframework.web.context.ContextLoaderListener
 import com.coeusweb.core.ControllerRegistry
 
+import com.coeusweb.spring.test._
+
 class SpringIntegrationTest {
-  
-  val servletConfig = new MockServletConfig("test-servlet")
-  (new ContextLoaderListener).contextInitialized(new ServletContextEvent(servletConfig.getServletContext))
-  
-  val module = new SpringModule(servletConfig)
-  val config = module.dispatcherConfig
 
   @Test
   def register_and_create_controllers() {
+    val module = init("/web-context.xml")
+    module.register(new ControllerRegistry(module.dispatcherConfig))
     
-    module.register(new ControllerRegistry(config))
+    val factory = module.dispatcherConfig.controllerFactory
     
-    val blog = config.controllerFactory.createController(classOf[test.BlogController])
+    val blog = factory.createController(classOf[BlogController])
     assertNotNull(blog.index)
-    assertNotSame(blog, config.controllerFactory.createController(classOf[test.BlogController]))
+    assertNotSame(blog, factory.createController(classOf[BlogController]))
     
-    val post = config.controllerFactory.createController(classOf[test.PostController])
+    val post = factory.createController(classOf[PostController])
     assertNotNull(post.index)
+  }
+  
+  @Test(expected=classOf[ConfigurationException])
+  def detect_singleton_controllers() {
+    val module = init("/errors-context.xml")
+    module.register(new ControllerRegistry(module.dispatcherConfig))
+  }
+  
+  
+  private def init(configLocation: String): SpringModule = {
+    val servletContext = new MockServletContext
+    servletContext.addInitParameter("contextConfigLocation", configLocation)
+    val servletConfig = new MockServletConfig(servletContext, "test-servlet")
+    (new ContextLoaderListener).contextInitialized(new ServletContextEvent(servletContext))
+    new SpringModule(servletConfig)
   }
 }
