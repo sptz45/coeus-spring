@@ -10,7 +10,9 @@ import java.util.Locale
 import org.springframework.context.{ MessageSource, NoSuchMessageException }
 import com.coeusweb.i18n.msg.{ MessageBundle, MessageNotFoundException }
 
-
+/**
+ * Adapts a Spring {@link MessageSource} to a Coeus {@link MessageBundle}.
+ */
 class MessageSourceBundle(messages: MessageSource) extends MessageBundle {
 
   def apply(locale: Locale, code: String, args: Any*): String = {
