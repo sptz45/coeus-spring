@@ -10,7 +10,7 @@ import javax.servlet.ServletContext
 import org.springframework.web.context.support.WebApplicationContextUtils
 import org.springframework.web.context.WebApplicationContext
 import com.coeusweb.Controller
-import com.coeusweb.core.ControllerRegistry
+import com.coeusweb.config.ControllerRegistry
 
 /**
  * Register all the Coeus {@code Controller} classes found in a Spring {@code WebApplicationContext}.

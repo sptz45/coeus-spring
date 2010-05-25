@@ -11,18 +11,15 @@ import org.junit.Assert._
 import javax.servlet.ServletContextEvent
 import org.springframework.mock.web.{ MockServletConfig, MockServletContext }
 import org.springframework.web.context.ContextLoaderListener
-import com.coeusweb.core.ControllerRegistry
 
 import com.coeusweb.spring.test._
 
-class SpringIntegrationTest {
+class SpringControllerFactoryTest {
 
   @Test
-  def register_and_create_controllers() {
-    val module = init("/web-context.xml")
-    module.register(new ControllerRegistry(module.dispatcherConfig))
-    
-    val factory = module.dispatcherConfig.controllerFactory
+  def create_controllers_from_spring_app_context() {
+    val config = init("/web-context.xml")
+    val factory = config.controllerFactory
     
     val blog = factory.createController(classOf[BlogController])
     assertNotNull(blog.index)
@@ -32,18 +29,11 @@ class SpringIntegrationTest {
     assertNotNull(post.index)
   }
   
-  @Test(expected=classOf[ConfigurationException])
-  def detect_singleton_controllers() {
-    val module = init("/errors-context.xml")
-    module.register(new ControllerRegistry(module.dispatcherConfig))
-  }
-  
-  
-  private def init(configLocation: String): SpringModule = {
+  private def init(configLocation: String) = {
     val servletContext = new MockServletContext
     servletContext.addInitParameter("contextConfigLocation", configLocation)
     val servletConfig = new MockServletConfig(servletContext, "test-servlet")
     (new ContextLoaderListener).contextInitialized(new ServletContextEvent(servletContext))
-    new SpringModule(servletConfig)
+    new SpringDispatcherContext(servletConfig).dispatcherConfig
   }
 }

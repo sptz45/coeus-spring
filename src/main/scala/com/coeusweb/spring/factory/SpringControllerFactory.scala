@@ -22,7 +22,7 @@ class SpringControllerFactory(servletContext: ServletContext) extends Controller
   
   val context = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext)
 
-  def registerClass[C <: Controller](controllerClass: Class[C]) { }
+  def controllerRegistered[C <: Controller](controllerClass: Class[C]) { }
 
   def createController[C <: Controller](klass: Class[C]): C = {
     context.getBean(classToBeanName(klass)).asInstanceOf[C]

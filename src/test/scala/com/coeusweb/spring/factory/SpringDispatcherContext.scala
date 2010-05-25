@@ -7,17 +7,14 @@
 package com.coeusweb.spring.factory
 
 import javax.servlet.ServletConfig
-import com.coeusweb.core.ControllerRegistry
 import com.coeusweb.config._
 
 
-class SpringModule(sc: ServletConfig) extends ConfigBuilder(sc) with ControllerRegistrar {
+class SpringDispatcherContext(sc: ServletConfig) extends ConfigBuilder(sc) with ControllerRegistry {
+  
+  SpringRegistrar.registerControllers(this, sc.getServletContext)
 
   override val dispatcherConfig = new DispatcherConfig(sc) {
     override lazy val controllerFactory = new SpringControllerFactory(sc.getServletContext)
-  }
-
-  def register(registry: ControllerRegistry) {
-    SpringRegistrar.registerControllers(registry, sc.getServletContext)
   }
 }
