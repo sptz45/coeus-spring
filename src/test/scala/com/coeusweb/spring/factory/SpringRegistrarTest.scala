@@ -1,3 +1,9 @@
+/* - Coeus web framework -------------------------
+ *
+ * Licensed under the Apache License, Version 2.0.
+ *
+ * Author: Spiros Tzavellas
+ */
 package com.coeusweb.spring.factory
 
 import org.junit.Test
@@ -11,13 +17,13 @@ import com.coeusweb.spring.test._
 class SpringRegistrarTest {
   
   @Test(expected=classOf[ConfigurationException])
-  def detect_singleton_controllers() {
+  def raise_error_when_a_controller_is_not_configured_with_prototype_scope() {
     init("/errors-context.xml")
   }
   
   @Test
   def register_the_controllers_from_spring_context() {
-    val controllers = init("/web-context.xml").controllers
+    val controllers = init("/web-context.xml").controllers.result
     assertTrue(controllers.contains(classOf[BlogController]))
     assertTrue(controllers.contains(classOf[PostController]))
   }

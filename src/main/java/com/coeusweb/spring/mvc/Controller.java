@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 import org.springframework.context.annotation.Scope;
 
 /**
- * A Spring meta-annotation that can be used for annotating Coeus {@code Controller} classes.
+ * A Spring meta-annotation that can be used for annotating Coeus controllers.
  *
  * <p>The usage of this annotation is not necessary for using Coeus with Spring but it is
  * recommended.</p>

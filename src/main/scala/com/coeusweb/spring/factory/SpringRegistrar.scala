@@ -34,9 +34,9 @@ object SpringRegistrar {
    */
   def registerControllers(registry: ControllerRegistry, servletContext: ServletContext) {
     val context = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext)
-    for (name <- controllerNames(context)) {
-      assertIsPrototype(context, name)
-      registry.register(context.getType(name).asInstanceOf[Class[Controller]])
+    for (beanName <- controllerNames(context)) {
+      assertHasPrototypeScope(context, beanName)
+      registry.controllers += context.getType(beanName).asInstanceOf[Class[Controller]]
     }
   }
 
@@ -44,7 +44,7 @@ object SpringRegistrar {
     context.getBeanNamesForType(classOf[Controller])
   }
 
-  private def assertIsPrototype(context: WebApplicationContext, controllerName: String) {
+  private def assertHasPrototypeScope(context: WebApplicationContext, controllerName: String) {
     if (!context.isPrototype(controllerName)) {
       throw new ConfigurationException(
         "Controller bean with name '"+controllerName+"' is not configured with 'prototype' scope. All Controllers must have 'prototype' scope.")
