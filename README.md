@@ -14,9 +14,10 @@ To use Spring for dependency injection you have to:
 3. Use `SpringRegistrar` to register the controllers in Coeus    
 
 If you are using classpath scanning you could also annotate you controllers
-with the `@Controller` meta-annotation so that your controllers can be detected
-in classpath scanning and also automatically registered as prototype beans.
-
+with the `com.coeusweb.spring.mvc.Controller` meta-annotation so that your
+controllers can be detected in classpath scanning and also automatically
+registered as prototype beans.
+ 
 
 ## License
 
