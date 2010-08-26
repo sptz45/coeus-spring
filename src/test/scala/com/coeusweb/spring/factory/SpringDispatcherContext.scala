@@ -9,7 +9,7 @@ package com.coeusweb.spring.factory
 import javax.servlet.ServletConfig
 import com.coeusweb.config._
 
-class SpringDispatcherContext(sc: ServletConfig) extends ConfigBuilder(sc) with ControllerRegistry {
+class SpringDispatcherContext(sc: ServletConfig) extends WebModule(sc) {
   
   SpringRegistrar.registerControllers(this, sc.getServletContext)
 

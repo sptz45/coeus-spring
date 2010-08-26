@@ -9,7 +9,7 @@ package com.coeusweb.spring.interceptor
 import org.springframework.web.context.request.{ WebRequestInterceptor, ServletWebRequest }
 import org.springframework.web.servlet.HandlerInterceptor 
 import org.springframework.ui.ModelMap
-import com.coeusweb.interceptor.RequestInterceptor
+import com.coeusweb.interceptor.Interceptor
 import com.coeusweb.core.RequestContext
 
 /**
@@ -21,13 +21,13 @@ object RequestInterceptorAdapter {
   /**
    * Wrap the given @{code WebRequestInterceptor} in a {@code RequestInterceptor}. 
    */
-  def apply(interceptor: WebRequestInterceptor): RequestInterceptor =
+  def apply(interceptor: WebRequestInterceptor): Interceptor =
     new WebRequestInterceptorAdapter(interceptor)
   
   /**
    * Wrap the given @{code HandlerInterceptor} in a {@code RequestInterceptor}. 
    */
-  def apply(interceptor: HandlerInterceptor): RequestInterceptor =
+  def apply(interceptor: HandlerInterceptor): Interceptor =
     new HandlerInterceptorAdapter(interceptor)
 
   private implicit def toException(t: Throwable) = t match {
@@ -35,7 +35,7 @@ object RequestInterceptorAdapter {
     case _            => new Exception(t)
   }
 
-  private class WebRequestInterceptorAdapter(interceptor: WebRequestInterceptor) extends RequestInterceptor {
+  private class WebRequestInterceptorAdapter(interceptor: WebRequestInterceptor) extends Interceptor {
     def preHandle(context: RequestContext): Boolean = {
       val req = new ServletWebRequest(context.request.servletRequest, context.response.servletResponse)
       interceptor.preHandle(req)
@@ -51,7 +51,7 @@ object RequestInterceptorAdapter {
     }
   }
 
-  private class HandlerInterceptorAdapter(interceptor: HandlerInterceptor) extends RequestInterceptor {
+  private class HandlerInterceptorAdapter(interceptor: HandlerInterceptor) extends Interceptor {
     def preHandle(context: RequestContext): Boolean = {
       import context._
       interceptor.preHandle(request.servletRequest, response.servletResponse, handler)
