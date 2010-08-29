@@ -13,14 +13,17 @@ import com.coeusweb.core.factory.ControllerFactory
 import com.coeusweb.core.convention.Conventions
 
 /**
- * A {@code ControllerFactory} that creates {@code Controller} instances from beans
- * defined in a {@code WebApplicationContext}. 
+ * A <code>ControllerFactory</code> that creates <code>Controller</code>
+ * instances from beans defined in a <code>WebApplicationContext</code>.
  * 
- * @see SpringRegistrar
+ * @param sc the <code>ServletContext</code> to be used for discovering the
+ *           <code>WebApplicationContext</code>.
+ * 
+ * @see WebApplicationContext
  */
-class SpringControllerFactory(servletContext: ServletContext) extends ControllerFactory {
+class SpringControllerFactory(sc: ServletContext) extends ControllerFactory {
   
-  val context = WebApplicationContextUtils.getRequiredWebApplicationContext(servletContext)
+  val context = WebApplicationContextUtils.getRequiredWebApplicationContext(sc)
 
   def controllerRegistered[C <: Controller](controllerClass: Class[C]) { }
 
@@ -29,11 +32,10 @@ class SpringControllerFactory(servletContext: ServletContext) extends Controller
   }
   
   /**
-   * Translate the class name to a bean name to be used for creating a controller instance
-   * from a Spring {@code ApplicationContext}.
+   * Derive the bean name of a controller from the controller's class.
    * 
-   * <p>This method uses the class simple name with the first character converted to lower
-   * case.</p>
+   * <p>This method will return the simple name of the class with the first
+   * character converted to lower case.</p>
    * 
    * @param c the class to use for deriving a controller bean name
    */

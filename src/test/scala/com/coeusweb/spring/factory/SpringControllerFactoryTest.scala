@@ -6,6 +6,7 @@
  */
 package com.coeusweb.spring.factory
 
+
 import org.junit.Test
 import org.junit.Assert._
 import javax.servlet.ServletContextEvent
@@ -34,6 +35,6 @@ class SpringControllerFactoryTest {
     servletContext.addInitParameter("contextConfigLocation", configLocation)
     val servletConfig = new MockServletConfig(servletContext, "test-servlet")
     (new ContextLoaderListener).contextInitialized(new ServletContextEvent(servletContext))
-    new SpringDispatcherContext(servletConfig).dispatcherConfig
+    new SpringWebModule(servletConfig)
   }
 }

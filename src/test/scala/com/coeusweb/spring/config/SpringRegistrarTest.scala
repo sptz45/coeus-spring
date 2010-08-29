@@ -4,19 +4,20 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.factory
+package com.coeusweb.spring.config
 
 import org.junit.Test
 import org.junit.Assert._
 import javax.servlet.ServletContextEvent
 import org.springframework.mock.web.{ MockServletConfig, MockServletContext }
 import org.springframework.web.context.ContextLoaderListener
+import com.coeusweb.core.FrameworkException
 
 import com.coeusweb.spring.test._
 
 class SpringRegistrarTest {
   
-  @Test(expected=classOf[ConfigurationException])
+  @Test(expected=classOf[FrameworkException])
   def raise_error_when_a_controller_is_not_configured_with_prototype_scope() {
     init("/errors-context.xml")
   }
@@ -33,6 +34,6 @@ class SpringRegistrarTest {
     servletContext.addInitParameter("contextConfigLocation", configLocation)
     val servletConfig = new MockServletConfig(servletContext, "test-servlet")
     (new ContextLoaderListener).contextInitialized(new ServletContextEvent(servletContext))
-    new SpringDispatcherContext(servletConfig)
+    new SpringWebModule(servletConfig)
   }
 }
