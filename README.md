@@ -11,7 +11,7 @@ To use Spring for dependency injection you have to:
 1. Define your Coeus controllers in a Spring `WebApplicationContext`.
 2. Configure Coeus to use `SpringControllerFactory` for creating the controller
    instances from the Spring application context.
-3. Register the controllers in the WebModule class of your application.
+3. Register the controller classes in the WebModule class of your application.
 
 Steps 2 and 3 can be performed automatically by mixing the `SpringSupport`
 trait in your `WebModule`. For example:    
