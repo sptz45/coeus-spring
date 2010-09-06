@@ -8,7 +8,7 @@ package com.coeusweb.spring
 package test
 
 import javax.servlet.ServletConfig
-import com.coeusweb.config._
+import com.coeusweb.core.config._
 
 class SpringWebModule(sc: ServletConfig) extends WebModule(sc)
                                             with config.SpringSupport

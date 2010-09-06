@@ -8,7 +8,7 @@ package com.coeusweb.spring
 package config
 
 import org.springframework.web.context.support.WebApplicationContextUtils
-import com.coeusweb.config.WebModule
+import com.coeusweb.core.config.WebModule
 import factory._
 
 /**

@@ -10,8 +10,8 @@ import javax.servlet.ServletContext
 import org.springframework.web.context.support.WebApplicationContextUtils
 import org.springframework.web.context.WebApplicationContext
 import com.coeusweb.Controller
-import com.coeusweb.core.FrameworkException
-import com.coeusweb.config.ControllerRegistry
+import com.coeusweb.FrameworkException
+import com.coeusweb.core.config.ControllerRegistry
 
 /**
  * Register all the Coeus <code>Controller</code> classes found in a Spring

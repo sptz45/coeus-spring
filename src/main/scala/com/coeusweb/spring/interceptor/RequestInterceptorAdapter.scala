@@ -9,7 +9,7 @@ package com.coeusweb.spring.interceptor
 import org.springframework.web.context.request.{ WebRequestInterceptor, ServletWebRequest }
 import org.springframework.web.servlet.HandlerInterceptor 
 import org.springframework.ui.ModelMap
-import com.coeusweb.interceptor.Interceptor
+import com.coeusweb.core.interception.Interceptor
 import com.coeusweb.core.RequestContext
 
 /**
