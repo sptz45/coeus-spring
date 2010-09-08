@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.coeusweb</groupId>
 	<artifactId>coeus-spring</artifactId>
-	<version>0.7.2-SNAPSHOT</version>
+	<version>0.5-SNAPSHOT</version>
 	<name>Coeus Spring Integration</name>
 	<description>Integration of Coeus with the Spring Framework</description>
 	<inceptionYear>2010</inceptionYear>
@@ -54,7 +54,7 @@
 		<dependency>
 			<groupId>com.coeusweb</groupId>
 			<artifactId>coeus</artifactId>
-			<version>0.7.2-SNAPSHOT</version>
+			<version>0.5-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
