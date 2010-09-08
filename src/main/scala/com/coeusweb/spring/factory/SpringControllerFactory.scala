@@ -8,9 +8,9 @@ package com.coeusweb.spring.factory
 
 import javax.servlet.ServletContext
 import org.springframework.web.context.support.WebApplicationContextUtils
-import com.coeusweb.Controller
+import com.coeusweb.mvc.controller.Controller
+import com.coeusweb.mvc.util.Conventions
 import com.coeusweb.core.factory.ControllerFactory
-import com.coeusweb.core.convention.Conventions
 
 /**
  * A <code>ControllerFactory</code> that creates <code>Controller</code>
