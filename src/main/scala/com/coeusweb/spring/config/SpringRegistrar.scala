@@ -14,8 +14,8 @@ import com.coeusweb.mvc.controller.Controller
 import com.coeusweb.core.config.ControllerRegistry
 
 /**
- * Register all the Coeus <code>Controller</code> classes found in a Spring
- * <code>WebApplicationContext</code>.
+ * Register all the Coeus {@code Controller} beans found in a Spring
+ * {@code WebApplicationContext}.
  *
  * @see WebApplicationContext
  */
@@ -29,13 +29,13 @@ private object SpringRegistrar {
    * @param servletContext used to locate the Spring application context
    *
    * @throws FrameworkException if an error is detected in the way the Coeus
-   *         controllers are configured (e.g. when are not prototype scoped)
+   *         controllers are configured (e.g. when are not singleton scoped)
    */
   def registerControllers(registry: ControllerRegistry, sc: ServletContext) {
     val ctx = WebApplicationContextUtils.getRequiredWebApplicationContext(sc)
     for (name <- controllerNames(ctx)) {
-      assertHasPrototypeScope(ctx, name)
-      registry.controllers += ctx.getType(name).asInstanceOf[Class[Controller]]
+      assertHasSingletonScope(ctx, name)
+      registry.controllers += ctx.getBean(name, classOf[Controller])
     }
   }
 
@@ -43,8 +43,8 @@ private object SpringRegistrar {
     ctx.getBeanNamesForType(classOf[Controller])
   }
 
-  private def assertHasPrototypeScope(ctx: WebApplicationContext, name: String) {
-    if (!ctx.isPrototype(name)) {
+  private def assertHasSingletonScope(ctx: WebApplicationContext, name: String) {
+    if (!ctx.isSingleton(name)) {
       throw new FrameworkException(
         "Controller bean with name '"+name+"' is not configured with " +
         "'prototype' scope. All Controllers must have 'prototype' scope.")

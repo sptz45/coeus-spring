@@ -18,15 +18,15 @@ import com.coeusweb.spring.test._
 class SpringRegistrarTest {
   
   @Test(expected=classOf[FrameworkException])
-  def raise_error_when_a_controller_is_not_configured_with_prototype_scope() {
+  def raise_error_when_a_controller_is_not_configured_with_singleton_scope() {
     init("/errors-context.xml")
   }
   
   @Test
   def register_the_controllers_from_spring_context() {
     val controllers = init("/web-context.xml").controllers.result
-    assertTrue(controllers.contains(classOf[BlogController]))
-    assertTrue(controllers.contains(classOf[PostController]))
+    assertTrue(controllers.exists(_.getClass == classOf[BlogController]))
+    assertTrue(controllers.exists(_.getClass == classOf[PostController]))
   }
   
   private def init(configLocation: String) = {

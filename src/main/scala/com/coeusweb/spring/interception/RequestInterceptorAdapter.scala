@@ -4,7 +4,7 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.interceptor
+package com.coeusweb.spring.interception
 
 import org.springframework.web.context.request.{ WebRequestInterceptor, ServletWebRequest }
 import org.springframework.web.servlet.HandlerInterceptor 

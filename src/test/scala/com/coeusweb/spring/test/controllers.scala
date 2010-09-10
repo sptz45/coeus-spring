@@ -9,6 +9,7 @@ package com.coeusweb.spring.test
 import com.coeusweb.mvc._
 import com.coeusweb.spring.mvc.Controller
 import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Scope
 
 @Controller
 class BlogController extends AbstractController {
@@ -21,6 +22,7 @@ class PostController extends AbstractController {
 }
 
 @Component
-class SingletonController extends AbstractController {
+@Scope("prototype")
+class PrototypeController extends AbstractController {
   @Get def index = "index"
 }
