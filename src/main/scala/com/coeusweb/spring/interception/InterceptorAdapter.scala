@@ -14,9 +14,9 @@ import com.coeusweb.core.RequestContext
 
 /**
  * Adapts Spring's {@link WebRequestInterceptor} and {@link HandlerInterceptor} to
- * Coeus {@link RequestInterceptor} trait.
+ * Coeus {@link Interceptor} trait.
  */
-object RequestInterceptorAdapter {
+object InterceptorAdapter {
   
   /**
    * Wrap the given @{code WebRequestInterceptor} in a {@code RequestInterceptor}. 
@@ -30,16 +30,11 @@ object RequestInterceptorAdapter {
   def apply(interceptor: HandlerInterceptor): Interceptor =
     new HandlerInterceptorAdapter(interceptor)
 
-  private implicit def toException(t: Throwable) = t match {
-    case e: Exception => e
-    case _            => new Exception(t)
-  }
-
   private class WebRequestInterceptorAdapter(interceptor: WebRequestInterceptor) extends Interceptor {
     def preHandle(context: RequestContext): Boolean = {
       val req = new ServletWebRequest(context.request.servletRequest, context.response.servletResponse)
       interceptor.preHandle(req)
-      continue
+      true
     }
     def postHandle(context: RequestContext) {
       val req = new ServletWebRequest(context.request.servletRequest, context.response.servletResponse)
