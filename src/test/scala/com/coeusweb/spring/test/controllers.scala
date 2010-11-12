@@ -7,8 +7,7 @@
 package com.coeusweb.spring.test
 
 import com.coeusweb.mvc._
-import com.coeusweb.spring.mvc.Controller
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.{ Component, Controller }
 import org.springframework.context.annotation.Scope
 
 @Controller
