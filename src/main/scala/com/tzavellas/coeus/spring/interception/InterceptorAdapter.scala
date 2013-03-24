@@ -13,19 +13,19 @@ import com.tzavellas.coeus.core.interception.Interceptor
 import com.tzavellas.coeus.core.RequestContext
 
 /**
- * Adapts Spring's {@link WebRequestInterceptor} and {@link HandlerInterceptor} to
- * Coeus {@link Interceptor} trait.
+ * Adapts Spring's `WebRequestInterceptor` and `HandlerInterceptor` to
+ * coeus `Interceptor` trait.
  */
 object InterceptorAdapter {
   
   /**
-   * Wrap the given @{code WebRequestInterceptor} in a {@code RequestInterceptor}. 
+   * Wrap the given `WebRequestInterceptor` in a `RequestInterceptor`. 
    */
   def apply(interceptor: WebRequestInterceptor): Interceptor =
     new WebRequestInterceptorAdapter(interceptor)
   
   /**
-   * Wrap the given @{code HandlerInterceptor} in a {@code RequestInterceptor}. 
+   * Wrap the given `HandlerInterceptor` in a `RequestInterceptor`. 
    */
   def apply(interceptor: HandlerInterceptor): Interceptor =
     new HandlerInterceptorAdapter(interceptor)

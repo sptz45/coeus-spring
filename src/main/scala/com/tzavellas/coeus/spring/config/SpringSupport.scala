@@ -11,11 +11,11 @@ import org.springframework.web.context.support.WebApplicationContextUtils
 import com.tzavellas.coeus.core.config.WebModule
 
 /**
- * A trait that performs any Spring related setup in a {@code WebModule}.
+ * A trait that performs any Spring related setup in a `WebModule`.
  *
- * <p>This trait registers all the {@code Controller} classes found in the
- * {@code WebApplicationContext} in the module's controller registry. The 
- * controllers must be defined as <em>Singleton</em> Spring beans.</p>
+ * This trait registers all the `Controller` classes found in the
+ * `WebApplicationContext` in the module's controller registry. The 
+ * controllers must be defined as '''Singleton''' Spring beans.
  * 
  * @see WebApplicationContextUtils
  */
@@ -27,7 +27,7 @@ trait SpringSupport {
 
 
   /**
-   * Retrieve a bean from <code>WebApplicationContext</code>.
+   * Retrieve a bean from `WebApplicationContext`.
    * 
    * @param name the name of the bean.
    * @param T    the type of the bean.

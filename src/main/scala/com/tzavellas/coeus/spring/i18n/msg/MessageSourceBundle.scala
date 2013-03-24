@@ -11,7 +11,7 @@ import org.springframework.context.{ MessageSource, NoSuchMessageException }
 import com.tzavellas.coeus.i18n.msg.{ MessageBundle, MessageNotFoundException }
 
 /**
- * Adapts a Spring {@link MessageSource} to a Coeus {@link MessageBundle}.
+ * Adapts a Spring `MessageSource` to a coeus {`MessageBundle`.
  */
 class MessageSourceBundle(messages: MessageSource) extends MessageBundle {
 

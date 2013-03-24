@@ -14,15 +14,14 @@ import com.tzavellas.coeus.mvc.controller.Controller
 import com.tzavellas.coeus.core.config.ControllerRegistry
 
 /**
- * Register all the Coeus {@code Controller} beans found in a Spring
- * {@code WebApplicationContext}.
+ * Register all the coeus `Controller` beans found in a Spring `WebApplicationContext`.
  *
  * @see WebApplicationContext
  */
 private object SpringRegistrar {
 
   /**
-   * Register any Coeus Controllers defined as Spring beans in the specified
+   * Register any coeus Controllers defined as Spring beans in the specified
    * {@code WebApplicationContext}.
    *
    * @param registry       used to register the controllers
