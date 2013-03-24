@@ -4,7 +4,7 @@
 Basic integration for the Coeus and Spring frameworks.
 
 For a complete example application that uses SpringFramework and Coeus see the
-__petclinic__ at [coeus-samples](http://github.com/coeusframework/coeus-samples).
+__petclinic__ at [coeus-samples](http://github.com/sptz45/coeus-samples).
 
 
 ## Using Spring for dependency injection in a Coeus application
