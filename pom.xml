@@ -1,11 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.coeusweb</groupId>
+	<groupId>com.tzavellas</groupId>
 	<artifactId>coeus-spring</artifactId>
 	<version>0.5-SNAPSHOT</version>
 	<name>Coeus Spring Integration</name>
 	<description>Integration of Coeus with the Spring Framework</description>
+	<url>http://github.com/sptz45/coeus-spring</url>
 	<inceptionYear>2010</inceptionYear>
 	
 	<licenses>
@@ -28,9 +29,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/coeusframework/coeus-spring.git</connection>
-		<developerConnection>scm:git:git@github.com:coeusframework/coeus-spring.git</developerConnection>
-		<url>http://github.com/coeusframework/coeus-spring/tree/master</url>
+		<connection>scm:git:git://github.com/sptz45/coeus-spring.git</connection>
+		<developerConnection>scm:git:git@github.com:sptz45/coeus-spring.git</developerConnection>
+		<url>http://github.com/sptz45/coeus-spring/tree/master</url>
 	</scm>
 
 	<properties>
