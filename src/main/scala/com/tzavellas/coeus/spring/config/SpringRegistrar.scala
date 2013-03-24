@@ -46,7 +46,7 @@ private object SpringRegistrar {
     if (!ctx.isSingleton(name)) {
       throw new FrameworkException(
         "Controller bean with name '"+name+"' is not configured with " +
-        "'prototype' scope. All Controllers must have 'prototype' scope.", null)
+        "'singleton' scope. All Controllers must have 'singleton' scope.", null)
     }
   }
 }
