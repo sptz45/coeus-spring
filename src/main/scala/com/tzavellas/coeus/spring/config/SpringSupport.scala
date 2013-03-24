@@ -4,11 +4,11 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring
+package com.tzavellas.coeus.spring
 package config
 
 import org.springframework.web.context.support.WebApplicationContextUtils
-import com.coeusweb.core.config.WebModule
+import com.tzavellas.coeus.core.config.WebModule
 
 /**
  * A trait that performs any Spring related setup in a {@code WebModule}.

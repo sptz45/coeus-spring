@@ -4,16 +4,16 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.config
+package com.tzavellas.coeus.spring.config
 
 import org.junit.Test
 import org.junit.Assert._
 import javax.servlet.ServletContextEvent
 import org.springframework.mock.web.{ MockServletConfig, MockServletContext }
 import org.springframework.web.context.ContextLoaderListener
-import com.coeusweb.FrameworkException
+import com.tzavellas.coeus.FrameworkException
 
-import com.coeusweb.spring.test._
+import com.tzavellas.coeus.spring.test._
 
 class SpringRegistrarTest {
   

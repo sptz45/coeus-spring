@@ -4,13 +4,13 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.interception
+package com.tzavellas.coeus.spring.interception
 
 import org.springframework.web.context.request.{ WebRequestInterceptor, ServletWebRequest }
 import org.springframework.web.servlet.HandlerInterceptor 
 import org.springframework.ui.ModelMap
-import com.coeusweb.core.interception.Interceptor
-import com.coeusweb.core.RequestContext
+import com.tzavellas.coeus.core.interception.Interceptor
+import com.tzavellas.coeus.core.RequestContext
 
 /**
  * Adapts Spring's {@link WebRequestInterceptor} and {@link HandlerInterceptor} to

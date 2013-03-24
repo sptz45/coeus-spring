@@ -4,11 +4,11 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring
+package com.tzavellas.coeus.spring
 package test
 
 import javax.servlet.ServletConfig
-import com.coeusweb.core.config._
+import com.tzavellas.coeus.core.config._
 import config.SpringSupport
 
 class SpringWebModule(sc: ServletConfig) extends WebModule(sc)

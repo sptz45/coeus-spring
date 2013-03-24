@@ -4,11 +4,11 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.i18n.msg
+package com.tzavellas.coeus.spring.i18n.msg
 
 import java.util.Locale
 import org.springframework.context.{ MessageSource, NoSuchMessageException }
-import com.coeusweb.i18n.msg.{ MessageBundle, MessageNotFoundException }
+import com.tzavellas.coeus.i18n.msg.{ MessageBundle, MessageNotFoundException }
 
 /**
  * Adapts a Spring {@link MessageSource} to a Coeus {@link MessageBundle}.

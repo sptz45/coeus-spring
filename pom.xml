@@ -52,7 +52,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.coeusweb</groupId>
+			<groupId>com.tzavellas</groupId>
 			<artifactId>coeus</artifactId>
 			<version>0.5-SNAPSHOT</version>
 		</dependency>

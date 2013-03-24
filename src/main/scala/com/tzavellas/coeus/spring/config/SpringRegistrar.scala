@@ -4,14 +4,14 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.config
+package com.tzavellas.coeus.spring.config
 
 import javax.servlet.ServletContext
 import org.springframework.web.context.support.WebApplicationContextUtils
 import org.springframework.web.context.WebApplicationContext
-import com.coeusweb.FrameworkException
-import com.coeusweb.mvc.controller.Controller
-import com.coeusweb.core.config.ControllerRegistry
+import com.tzavellas.coeus.FrameworkException
+import com.tzavellas.coeus.mvc.controller.Controller
+import com.tzavellas.coeus.core.config.ControllerRegistry
 
 /**
  * Register all the Coeus {@code Controller} beans found in a Spring

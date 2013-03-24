@@ -13,8 +13,8 @@ To use Spring for dependency injection you must define your controllers as
 __singleton__ Spring beans in a `WebApplicationContext` and mix the
 `SpringSupport` trait in your `WebModule`. For example: 
 
-	import com.coeusweb.config.WebModule
-	import com.coeusweb.spring.config.SpringSupport
+	import com.tzavellas.coeus.config.WebModule
+	import com.tzavellas.coeus.spring.config.SpringSupport
 
 	class MyModule(sc: ServletConfig) extends WebModule(sc) with SpringSupport
 

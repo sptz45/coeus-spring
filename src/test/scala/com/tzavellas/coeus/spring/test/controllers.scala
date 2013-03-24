@@ -4,9 +4,9 @@
  *
  * Author: Spiros Tzavellas
  */
-package com.coeusweb.spring.test
+package com.tzavellas.coeus.spring.test
 
-import com.coeusweb.mvc._
+import com.tzavellas.coeus.mvc._
 import org.springframework.stereotype.{ Component, Controller }
 import org.springframework.context.annotation.Scope
 
